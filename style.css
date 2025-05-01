@@ -1,0 +1,415 @@
+/* General styles */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #1a1a2e, #16213e); 
+    color: #e0e0e0; 
+    line-height: 1.6;
+}
+
+h1 {
+    text-align: center;
+    color: #00bfff; 
+    font-family: 'Orbitron', sans-serif; 
+    text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff;
+    margin-bottom: 40px;
+}
+
+h2 {
+    color: #4fc3f7; 
+    font-family: 'Orbitron', sans-serif;
+    border-bottom: 2px solid #4fc3f7; 
+    padding-bottom: 8px;
+    margin-top: 30px;
+    margin-bottom: 25px;
+    text-shadow: 0 0 5px #4fc3f7;
+}
+
+/* Container for layout */
+.container {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 40px; 
+    max-width: 1300px; 
+    margin: 0 auto;
+    background-color: rgba(22, 33, 62, 0.8); 
+    backdrop-filter: blur(5px); 
+    padding: 40px;
+    border-radius: 15px; 
+    border: 1px solid rgba(0, 191, 255, 0.3); 
+    box-shadow: 0 8px 30px rgba(0, 191, 255, 0.1); 
+}
+
+/* Responsive layout for larger screens */
+@media (min-width: 900px) {
+    .container {
+        grid-template-columns: 1fr 1fr; 
+    }
+}
+
+/* Section styling */
+.input-section,
+.output-section {
+    padding: 25px;
+    border: 1px solid rgba(79, 195, 247, 0.2); 
+    border-radius: 10px; 
+    background-color: rgba(26, 26, 46, 0.6); 
+    transition: box-shadow 0.3s ease;
+}
+
+.input-section:hover,
+.output-section:hover {
+    box-shadow: 0 0 15px rgba(79, 195, 247, 0.15); 
+}
+
+/* Separate system config from bus config */
+.system-config {
+    margin-bottom: 40px;
+}
+
+/* Ybus Grid Styling */
+.ybus-grid-container {
+    display: grid;
+    grid-template-columns: repeat(var(--num-buses, 3), 1fr); 
+    gap: 8px;
+    padding: 10px;
+    border: 1px solid #455a64; 
+    border-radius: 6px;
+    background-color: rgba(38, 50, 56, 0.3); 
+    margin-bottom: 5px; 
+    max-width: 100%; 
+    overflow-x: auto; 
+}
+
+.ybus-cell {
+    padding: 8px 10px;
+    border: 1px solid #546e7a;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 0.9rem; 
+    background-color: #37474f;
+    color: #eceff1;
+    caret-color: #4fc3f7;
+    text-align: center;
+    min-width: 80px; 
+    font-family: 'Roboto Mono', Consolas, Monaco, monospace;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ybus-cell:focus {
+    outline: none;
+    border-color: #4fc3f7;
+    box-shadow: 0 0 5px rgba(79, 195, 247, 0.4);
+}
+
+.ybus-cell.input-error {
+    border-color: #ff8a80; 
+    background-color: rgba(255, 138, 128, 0.15); 
+}
+
+.input-hint {
+    font-size: 0.85rem;
+    color: #90a4ae;
+    margin-top: 0;
+    margin-bottom: 18px;
+    text-align: center;
+    font-style: italic; 
+}
+
+/* Input elements styling */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #b0bec5; 
+    font-size: 0.95rem;
+}
+
+.system-config label {
+    margin-top: 15px; 
+}
+
+.system-config label:first-child {
+    margin-top: 0; 
+}
+
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px 15px; 
+    margin-bottom: 18px; 
+    border: 1px solid #455a64; 
+    border-radius: 6px; 
+    box-sizing: border-box;
+    font-size: 1rem;
+    background-color: #263238; 
+    color: #eceff1; 
+    caret-color: #4fc3f7; 
+}
+
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #4fc3f7; 
+    box-shadow: 0 0 8px rgba(79, 195, 247, 0.5); 
+}
+
+/* Button styling */
+button {
+    display: block;
+    width: 100%;
+    padding: 15px 25px; 
+    background: linear-gradient(145deg, #00bfff, #1e90ff); 
+    color: white;
+    border: none;
+    border-radius: 8px; 
+    cursor: pointer;
+    font-size: 1.2rem; 
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif; 
+    transition: all 0.3s ease;
+    margin-top: 25px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.2); 
+}
+
+button:hover {
+    background: linear-gradient(145deg, #1ec8ff, #46a3ff); 
+    box-shadow: 0 6px 20px rgba(0, 191, 255, 0.4); 
+    transform: translateY(-2px);
+}
+
+button:active {
+    background: linear-gradient(145deg, #00a6d9, #1c80e6); 
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(0, 191, 255, 0.3);
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    border: 1px solid rgba(79, 195, 247, 0.2); 
+    border-radius: 8px; 
+    overflow: hidden; 
+}
+
+th, td {
+    border: none; 
+    border-bottom: 1px solid rgba(79, 195, 247, 0.15); 
+    padding: 12px 15px; 
+    text-align: center;
+    vertical-align: middle;
+}
+
+th {
+    background-color: rgba(26, 26, 46, 0.9); 
+    color: #4fc3f7; 
+    font-weight: bold;
+    white-space: nowrap;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+}
+
+tbody tr {
+    background-color: rgba(38, 50, 56, 0.5); 
+    transition: background-color 0.3s ease;
+}
+
+tbody tr:last-child td {
+    border-bottom: none; 
+}
+
+tbody tr:hover {
+    background-color: rgba(55, 71, 79, 0.8); 
+}
+
+/* Network Visualization Area */
+.network-visualization {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px dashed rgba(79, 195, 247, 0.3);
+    border-radius: 8px;
+    background-color: rgba(26, 26, 46, 0.4);
+    text-align: center; 
+}
+
+.network-visualization h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #81d4fa;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1em;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+#network-canvas {
+    max-width: 100%;
+    height: auto;
+    background-color: rgba(0, 0, 20, 0.5); 
+    border-radius: 5px;
+    border: 1px solid rgba(79, 195, 247, 0.1);
+    cursor: default; 
+}
+
+/* Bus Cards Container */
+#bus-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 25px; 
+    margin-bottom: 30px;
+}
+
+/* Individual Bus Card Styling */
+.bus-card {
+    border: 1px solid rgba(79, 195, 247, 0.3); 
+    border-radius: 10px;
+    padding: 20px;
+    background: rgba(38, 50, 56, 0.7); 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.bus-card::before { 
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: conic-gradient(transparent, rgba(79, 195, 247, 0.3), transparent 30%);
+    animation: rotate 6s linear infinite;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+}
+
+.bus-card:hover::before {
+    opacity: 1;
+}
+
+@keyframes rotate {
+    100% { transform: rotate(1turn); }
+}
+
+.bus-card:hover {
+    transform: translateY(-5px) scale(1.02); 
+    box-shadow: 0 8px 25px rgba(0, 191, 255, 0.2); 
+    border-color: rgba(79, 195, 247, 0.6);
+}
+
+.bus-card > * { 
+    position: relative;
+    z-index: 1;
+}
+
+.bus-card h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #81d4fa; 
+    font-size: 1.2em;
+    border-bottom: 1px solid rgba(79, 195, 247, 0.2);
+    padding-bottom: 10px;
+    font-weight: 600;
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Sections within cards */
+.card-section {
+    margin-bottom: 18px;
+}
+
+.card-section > label {
+    display: block;
+    font-weight: bold;
+    color: #90a4ae; 
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Input groups (for paired inputs like P/Q or V/Phase) */
+.input-group {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 6px 12px;
+    align-items: center;
+}
+
+.input-group label {
+    font-weight: normal;
+    color: #b0bec5; 
+    margin-bottom: 0;
+    font-size: 0.9em;
+    text-align: right;
+}
+
+/* Inputs and Selects within cards */
+.bus-card input[type="number"],
+.bus-card select {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 0.95rem;
+    border: 1px solid #546e7a; 
+    border-radius: 5px;
+    background-color: #37474f; 
+    color: #eceff1; 
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.2);
+    box-sizing: border-box;
+    margin-bottom: 0;
+}
+
+.bus-card select {
+     appearance: none;
+     background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="%2390a4ae"%3E%3Cpath d="M6 9l-4-4h8z"/%3E%3C/svg%3E'); 
+     background-repeat: no-repeat;
+     background-position: right 10px center;
+     background-size: 10px;
+     padding-right: 30px;
+}
+
+.bus-card.highlighted {
+    border-color: #ffab40; 
+    box-shadow: 0 0 20px rgba(255, 171, 64, 0.5);
+}
+
+/* Output section specifics */
+#output p:first-child {
+    font-style: italic;
+    color: #90a4ae; 
+    margin-bottom: 15px;
+}
+
+#results-table {
+    margin-top: 20px;
+}
+
+#convergence-info {
+    font-weight: bold;
+    margin-top: 20px;
+    color: #81c784; 
+    text-shadow: 0 0 5px rgba(129, 199, 132, 0.5);
+}
+
+/* Error message styling */
+.error {
+    color: #ff8a80; 
+    background-color: rgba(255, 138, 128, 0.1); 
+    border: 1px solid rgba(255, 138, 128, 0.5);
+    padding: 12px 15px;
+    border-radius: 6px;
+    margin-top: 20px;
+    font-weight: bold;
+    min-height: 1.6em;
+    box-shadow: 0 0 10px rgba(255, 138, 128, 0.2);
+}
